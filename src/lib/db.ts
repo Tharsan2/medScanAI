@@ -5,8 +5,9 @@
 
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 
-const DB_PATH = path.join(process.cwd(), 'data', 'medscan.json');
+const DB_PATH = path.join(os.tmpdir(), 'data', 'medscan.json');
 const dbDir = path.dirname(DB_PATH);
 
 interface Store {

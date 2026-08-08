@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
+import os from 'os';
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -13,7 +14,7 @@ import {
   extractMedicalEntities, checkPrescriptions, buildTimelineNarrative,
 } from '@/lib/gemini';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
+const UPLOAD_DIR = path.join(os.tmpdir(), 'uploads');
 
 export async function POST(req: NextRequest) {
   const body = await req.json();

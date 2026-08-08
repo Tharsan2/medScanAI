@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+import os from 'os';
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import { createSession, saveDocument } from '@/lib/db';
 
-const UPLOAD_DIR = path.join(process.cwd(), 'uploads');
+const UPLOAD_DIR = path.join(os.tmpdir(), 'uploads');
 const ALLOWED_TYPES = ['application/pdf', 'image/jpeg', 'image/png'];
 const MAX_SIZE = 15 * 1024 * 1024; // 15MB
 
